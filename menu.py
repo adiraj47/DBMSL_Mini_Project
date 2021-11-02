@@ -2,6 +2,7 @@ import main
 import sqlite3 as sql
 import add_data as add
 import display_data as display
+import updation as updt
 main.data_creation()
 connect = sql.connect("Bank.sqlite")
 
