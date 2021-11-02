@@ -15,7 +15,8 @@ if __name__ == '__main__':
         3) Add a new employee
         4) Display the list of banks
         5) Display the list of branches
-        6) Display the details of the employee """)
+        6) Display the details of the employee
+        7)Update the details of the employee""")
         choice = input("Please Enter your choice: ")
         if choice == '1':
             bank_id = int(input("Please enter the bank ID: "))
@@ -39,3 +40,5 @@ if __name__ == '__main__':
             display.display_branch()
         elif choice == '6':
             display.display_employee()
+        elif choice=='7':
+            updt.update_emp()
