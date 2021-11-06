@@ -41,5 +41,5 @@ if __name__ == '__main__':
             display.display_branch()
         elif choice == '6':
             display.display_employee()
-        elif choice=='7':
+        elif choice == '7':
             updt.update_emp()
