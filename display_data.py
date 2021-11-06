@@ -1,7 +1,8 @@
 import main
 import sqlite3 as sql
+import streamlit as st
 main.data_creation()
-connect = sql.connect("Bank.sqlite")
+connect = sql.connect("Bank.sqlite", check_same_thread=False)
 
 
 # The new employee has been added
@@ -12,7 +13,7 @@ def display_bank():
     """
     print("The banks which our registered are:")
     for row in connect.execute("SELECT * FROM bank"):
-        print(row)
+        st.write(row)
 
 
 def display_branch():

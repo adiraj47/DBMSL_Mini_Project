@@ -14,8 +14,8 @@ if side_box == "Home":
     st.write("This page can perform basic CRUD applications like add, delete, update, display of all records")
 
 elif side_box == "Add":
-    opreation = st.selectbox("Please choose which add opreation", ("bank", "customer", "employee", "loan"))
-    if opreation == "bank":
+    operation = st.selectbox("Please choose which add opreation", ("bank", "customer", "employee", "loan"))
+    if operation == "bank":
         with st.form("bank_form"):
 
             bank_id = st.number_input("Please enter the bank id")
@@ -24,6 +24,14 @@ elif side_box == "Add":
             if bank_form:
                 add.add_bank(bank_id, bank_name)
                 st.write(bank_id, bank_name)
+elif side_box == "Display":
+    operation = st.selectbox("Please choose which display operation", ("bank", "customer", "employee", "loan"))
+    if operation == "bank":
+        display.display_bank()
+
+
+
+
 
 
 
