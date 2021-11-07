@@ -8,7 +8,7 @@ main.data_creation()
 connect = sql.connect("Bank.sqlite", check_same_thread=False)
 
 side_box = st.sidebar.selectbox("What operation would you like to perform",
-                                ("Home","Add", "Delete", "Update", "Display"))
+                                ("Home","Add", "Delete", "Update", "Display", "search"))
 if side_box == "Home":
     st.title("Welcome to the bank management system")
     st.write("This page can perform basic CRUD applications like add, delete, update, display of all records")
