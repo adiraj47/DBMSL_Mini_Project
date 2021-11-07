@@ -90,11 +90,11 @@ def add_customer(cust_id: int, fname: str, mname: str, lname: str, cust_street: 
     row = cursor.fetchone()
 
     if row:
-        print(f"already a customer present for {cust_id} please select other id")
+        st.write(f"already a customer present for {cust_id} please select other id")
     else:
-        cursor.execute("INSERT INTO customer VALUES (?, ?, ?, ?, ?, ?, ?)",(cust_id, fname, mname, lname, cust_street, cust_city))
+        cursor.execute("INSERT INTO customer VALUES (?, ?, ?, ?, ?, ?, ?)",(cust_id, fname, mname, lname, cust_street, cust_city, cust_email))
         cursor.connection.commit()
-        print(f"Welcome {fname} to our bank")
+        st.write(f"Welcome {fname} to our bank")
 
 
 def add_customer_phone(cust_id: int, cust_phone: int):
