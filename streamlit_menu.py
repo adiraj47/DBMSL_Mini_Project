@@ -28,6 +28,10 @@ elif side_box == "Display":
     operation = st.selectbox("Please choose which display operation", ("bank", "customer", "employee", "loan"))
     if operation == "bank":
         display.display_bank()
+    if operation == "customer":
+        with st.form("customer_form"):
+            display.display_customer()
+
 
 
 

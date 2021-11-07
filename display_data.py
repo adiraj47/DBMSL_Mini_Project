@@ -43,7 +43,7 @@ def display_customer():
     """
     print("The number of customer registered are as follows: ")
     for row in connect.execute("SELECT * FROM customer"):
-        print(row)
+        st.write(row)
 
 
 def display_loan():
