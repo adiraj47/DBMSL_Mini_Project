@@ -3,6 +3,7 @@ import sqlite3 as sql
 import add_data as add
 import display_data as display
 import updation as updt
+import delete_data
 main.data_creation()
 connect = sql.connect("Bank.sqlite")
 
@@ -17,7 +18,8 @@ if __name__ == '__main__':
         4) Display the list of banks
         5) Display the list of branches
         6) Display the details of the employee
-        7)Update the details of the employee""")
+        7)Update the details of the employee
+        8)Delete the details""")
         choice = input("Please Enter your choice: ")
         if choice == '1':
             bank_id = int(input("Please enter the bank ID: "))
@@ -43,3 +45,7 @@ if __name__ == '__main__':
             display.display_employee()
         elif choice == '7':
             updt.update_emp()
+        elif choice ==  '8':
+            t=input("Please enter the details you want to delete")
+
+
