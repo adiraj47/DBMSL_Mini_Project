@@ -47,5 +47,6 @@ if __name__ == '__main__':
             updt.update_emp()
         elif choice ==  '8':
             t=input("Please enter the details you want to delete")
+            delete_data.delete()
 
 
