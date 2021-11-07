@@ -1,7 +1,8 @@
 import main
 import sqlite3 as sql
+import streamlit as st
 main.data_creation()
-connect = sql.connect("Bank.sqlite")
+connect = sql.connect("Bank.sqlite", check_same_thread=False)
 
 
 def add_bank(id: int, name: str) -> None:
@@ -15,11 +16,11 @@ def add_bank(id: int, name: str) -> None:
     currsor.execute("SELECT * FROM bank WHERE bank_id = ?", (id, ))
     row = currsor.fetchone()
     if row:
-        print(f"Bank already present {row}")
+        st.write(f"Bank already present {row}")
     else:
         currsor.execute("INSERT INTO bank VALUES (?, ?)", (id, name))
         currsor.connection.commit()
-        print(f"The New bank has been created {name}")
+        st.write(f"The New bank has been created {name}")
 
 
 def add_branch(ifsc: int, address: str, name: str) -> None:
