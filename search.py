@@ -12,7 +12,7 @@ def search(table_name, col_name, value):
     :param table_name: Table name which is associated in the database
     :param col_name: The name of the column present in the table
     :param value: The value according to which it is needed to be searched
-    :return:
+    :return: The number of rows present according to the search
     """
     cursor = connect.cursor()
     query = f"SELECT * FROM {table_name} WHERE {col_name} = ?"
