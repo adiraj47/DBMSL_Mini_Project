@@ -4,11 +4,12 @@ import sqlite3 as sql
 import add_data as add
 import display_data as display
 import updation as updt
+import search
 main.data_creation()
 connect = sql.connect("Bank.sqlite", check_same_thread=False)
 
 side_box = st.sidebar.selectbox("What operation would you like to perform",
-                                ("Home","Add", "Delete", "Update", "Display", "search"))
+                                ("Home","Add", "Delete", "Update", "Display", "Search"))
 if side_box == "Home":
     st.title("Welcome to the bank management system")
     st.write("This page can perform basic CRUD applications like add, delete, update, display of all records")
@@ -58,14 +59,6 @@ elif side_box == "Add":
             if loan_submit:
                 add.add_loan(loan_id, cust_id, loan_amount)
 
-
-
-
-
-
-
-
-
 elif side_box == "Display":
     operation = st.selectbox("Please choose which display operation", ("Bank", "Customer", "Employee", "Loan"))
     if operation == "Bank":
@@ -76,6 +69,63 @@ elif side_box == "Display":
         display.display_employee()
     elif operation == "Loan":
         display.display_loan()
+elif side_box == "Search":
+    table = st.selectbox("Please choose in which table you want to search", ("Bank", "Customer", "Employee", "Loan"))
+    if table == "Bank":
+        search_element = st.selectbox("Please select according to which element you want to search: ", ("bank id", "Bank name"))
+        if search_element == "bank id":
+            value = st.number_input("Please enter the id you want to search")
+            result = search.search("bank", "bank_id", value)
+            st.write(result)
+        elif search_element == "Bank name":
+            value = st.text_input("Please enter the name of the bank:")
+            result = search.search("bank", "bname", value)
+            st.write(result)
+
+    elif table == "Customer":
+        search_element = st.selectbox("Please enter the searching parameter: ", ("Customer id", "First name", "City", "Email-id"))
+        if search_element == "Customer id":
+            value = st.number_input("Please enter the customer id you want to search: ")
+            result = search.search("customer", "CUST_ID", value)
+            st.write(result)
+        elif search_element == "First name":
+            value = st.text_input("Please enter the name of the customer: ")
+            result = search.search("customer", "CUST_FNAME", value)
+            st.write(result)
+        elif search_element == "City":
+            value = st.text_input("Please enter the city of the customer: ")
+            result = search.search("customer", "CUST_CITY", value)
+            st.write(result)
+        elif search_element == "Email-id":
+            value = st.text_input("Please enter the email id of the customer: ")
+            result = search.search("customer", "CUST_EMAIL_ID", value)
+            st.write(result)
+    elif table == "Employee":
+        search_element = st.selectbox("Please enter the search parameter", ("ID", "Name"))
+        if search_element == "ID":
+            value = st.number_input("Please enter the id of the employee: ")
+            result = search.search("employee", "EMP_ID", value)
+            st.write(result)
+        elif search_element == "Name":
+            value = st.text_input("Please enter the name of the employee: ")
+            result = search.search("employee", "EMP_NAME", value)
+            st.write(result)
+
+    elif table == "Loan":
+        search_element = st.selectbox("Please enter the search Parameter", ("ID", ))
+        if search_element == "ID":
+            value = st.number_input("Please enter the id of the loan")
+            result = search.search("loan", "LOAN_NO", value)
+            st.write(result)
+
+
+
+
+
+
+
+
+
 
 
 

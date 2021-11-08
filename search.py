@@ -5,7 +5,7 @@ main.data_creation()
 connect = sql.connect("Bank.sqlite", check_same_thread=False)
 
 
-def search_bank(table_name, col_name, value):
+def search(table_name, col_name, value):
     """
     This is the genric code for searching thorough various tables.
 
@@ -23,7 +23,7 @@ def search_bank(table_name, col_name, value):
 
 
 if __name__ == "__main__":
-    result = search_bank("bank", "bank_id", 1)
+    result = search("bank", "bank_id", 1)
     print(result)
 
 
