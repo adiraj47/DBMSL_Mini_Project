@@ -36,16 +36,46 @@ elif side_box == "Add":
             add_customer_form = st.form_submit_button("Submit")
             if add_customer_form:
                 add.add_customer(customer_id, customer_fname, customer_mname, customer_lname, customer_street, customer_city, customer_email_id)
+    elif operation == "Employee":
+        with st.form("add_employee_form"):
+            employee_id = st.number_input("Enter the id of the employee")
+            employee_name = st.text_input("Please enter the name of the employee")
+            employee_mail = st.text_input("Please enter the mail id of the employee")
+            employee_address = st.text_input("Please enter the address of the employee here")
+            employe_date_joining = st.text_input("Please enter the date in this format dd/mm/yy")
+
+            employee_form = st.form_submit_button("submit")
+
+            if employee_form:
+                add.add_employee(employee_id, employee_name, employee_mail, employee_address, employe_date_joining)
+
+    elif operation == "Loan":
+        with st.form("add_loan_form"):
+            loan_id = st.number_input("Please enter the loan id")
+            cust_id = st.number_input("Please enter the customer id ")
+            loan_amount = st.number_input("Please enter the amount of loan")
+            loan_submit = st.form_submit_button("Submit")
+            if loan_submit:
+                add.add_loan(loan_id, cust_id, loan_amount)
+
+
+
+
+
+
 
 
 
 elif side_box == "Display":
-    operation = st.selectbox("Please choose which display operation", ("bank", "customer", "employee", "loan"))
-    if operation == "bank":
+    operation = st.selectbox("Please choose which display operation", ("Bank", "Customer", "Employee", "Loan"))
+    if operation == "Bank":
         display.display_bank()
-    if operation == "customer":
-        with st.form("customer_form"):
-            display.display_customer()
+    elif operation == "Customer":
+        display.display_customer()
+    elif operation == "Employee":
+        display.display_employee()
+    elif operation == "Loan":
+        display.display_loan()
 
 
 

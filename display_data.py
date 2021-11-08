@@ -11,7 +11,7 @@ def display_bank():
     To display all the banks registered in the database
     :return:
     """
-    print("The banks which our registered are:")
+    st.write("The banks which our registered are:")
     for row in connect.execute("SELECT * FROM bank"):
         st.write(row)
 
@@ -21,9 +21,9 @@ def display_branch():
     display all the branches registered in the database
     :return:
     """
-    print("The number of branches which our registered are as follows: ")
+    st.write("The number of branches which our registered are as follows: ")
     for row in connect.execute("SELECT * FROM branch"):
-        print(row)
+        st.write(row)
 
 
 def display_employee():
@@ -31,9 +31,9 @@ def display_employee():
     display all the employees present in the database
     :return:
     """
-    print("The number of employee which are registered are as follows: ")
+    st.write("The number of employee which are registered are as follows: ")
     for row in connect.execute("SELECT * FROM employee"):
-        print(row)
+        st.write(row)
 
 
 def display_customer():
@@ -41,7 +41,7 @@ def display_customer():
     display all the customer present in the database
     :return:
     """
-    print("The number of customer registered are as follows: ")
+    st.write("The number of customer registered are as follows: ")
     for row in connect.execute("SELECT * FROM customer"):
         st.write(row)
 
@@ -51,5 +51,6 @@ def display_loan():
     display all the loans present in the database
     :return: None
     """
+    st.write("Number of people who have taken loan are: ")
     for row in connect.execute("SELECT * FROM loan"):
-        print(row)
+        st.write(row)

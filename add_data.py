@@ -59,11 +59,11 @@ def add_employee(id: int, name: str, email: str, address: str, joining_date: str
     cursor.execute("SELECT * FROM employee WHERE EMP_ID = ?", (id, ))
     row = cursor.fetchone()
     if row:
-        print(f"The employee already works here the details our: {row}")
+        st.write(f"The employee already works here the details our: {row}")
     else:
         cursor.execute("INSERT INTO employee VALUES (?, ?, ?, ?, ?)", (id, name, email, address, joining_date))
         cursor.connection.commit()
-        print(f"""The new employee has been added with the following details: 
+        st.write(f"""The new employee has been added with the following details: 
         Id: {id}
         Name: {name}
         Email-id: {id}
@@ -106,3 +106,22 @@ def add_customer_phone(cust_id: int, cust_phone: int):
     """
     cursor = connect.cursor()
     cursor.execute("INSERT INTO customer_phone VALUES (?, ?)", (cust_id, cust_phone))
+    cursor.connection.commit()
+
+def add_loan(loan_no: int, cust_id: int, loan_amount: int):
+    """
+
+    :param loan_no:
+    :param cust_id:
+    :param loan_amount:
+    :return:
+    """
+    cursor = connect.cursor()
+    cursor.execute("SELECT * FROM loan WHERE CUST_ID = ?", (cust_id, ))
+    row = cursor.fetchone()
+    if row:
+        st.write(f"The customer with {row[1]}has already taken the loan of {row[2]}")
+    else:
+        cursor.execute("INSERT INTO loan VALUES (?, ?, ?)", (loan_no, cust_id, loan_amount))
+        st.write(f"A loan of {loan_amount} has been issued to {cust_id}.")
+        cursor.connection.commit()
