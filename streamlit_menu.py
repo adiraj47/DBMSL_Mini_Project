@@ -58,7 +58,12 @@ elif side_box == "Add":
             loan_submit = st.form_submit_button("Submit")
             if loan_submit:
                 add.add_loan(loan_id, cust_id, loan_amount)
-
+elif side_box == "Update":
+    user_choice1=st.selectbox("Updation for",["Employee","Customer"],index=0)
+    if user_choice1=="Employee":
+        updt.update_emp()          
+    elif user_choice1=="Customer":
+        updt.update_cust()
 elif side_box == "Display":
     operation = st.selectbox("Please choose which display operation", ("Bank", "Customer", "Employee", "Loan"))
     if operation == "Bank":
