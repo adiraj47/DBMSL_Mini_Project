@@ -1,5 +1,6 @@
 import streamlit as st
 import main
+import dep_wi as dpw
 import sqlite3 as sql
 import add_data as add
 import display_data as display
@@ -9,7 +10,7 @@ main.data_creation()
 connect = sql.connect("Bank.sqlite", check_same_thread=False)
 
 side_box = st.sidebar.selectbox("What operation would you like to perform",
-                                ("Home","Add", "Delete", "Update", "Display", "Search"))
+                                ("Home","Add", "Delete", "Update", "Display", "Search","Add Customer Account"))
 if side_box == "Home":
     st.title("Welcome to the bank management system")
     st.write("This page can perform basic CRUD applications like add, delete, update, display of all records")
@@ -64,8 +65,10 @@ elif side_box == "Update":
         updt.update_emp()          
     elif user_choice1=="Customer":
         updt.update_cust()
+elif side_box=="Add Customer Account":
+    dpw.add_acount()
 elif side_box == "Display":
-    operation = st.selectbox("Please choose which display operation", ("Bank", "Customer", "Employee", "Loan"))
+    operation = st.selectbox("Please choose which display operation", ("Bank", "Customer", "Employee", "Loan","Customer Accounts"))
     if operation == "Bank":
         display.display_bank()
     elif operation == "Customer":
@@ -74,6 +77,8 @@ elif side_box == "Display":
         display.display_employee()
     elif operation == "Loan":
         display.display_loan()
+    elif operation=="Customer Accounts":
+        display.display_accounts()
 elif side_box == "Search":
     table = st.selectbox("Please choose in which table you want to search", ("Bank", "Customer", "Employee", "Loan"))
     if table == "Bank":
