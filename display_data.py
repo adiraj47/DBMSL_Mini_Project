@@ -54,3 +54,7 @@ def display_loan():
     st.write("Number of people who have taken loan are: ")
     for row in connect.execute("SELECT * FROM loan"):
         st.write(row)
+def display_accounts():
+    st.write("Cust id and Acc No of Customers who have an account  are: ")
+    for row in connect.execute("SELECT * FROM depos_with"):
+        st.write(row)
