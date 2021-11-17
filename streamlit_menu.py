@@ -5,6 +5,7 @@ import sqlite3 as sql
 import add_data as add
 import display_data as display
 import updation as updt
+import delete_data
 import search
 main.data_creation()
 connect = sql.connect("Bank.sqlite", check_same_thread=False)
@@ -127,6 +128,22 @@ elif side_box == "Search":
             value = st.number_input("Please enter the id of the loan")
             result = search.search("loan", "LOAN_NO", value)
             st.write(result)
+elif side_box == "Delete":
+
+    table_name = st.selectbox("Please select the name of the table", ("bank", "branch", "employee", "customer"))
+    column_name = st.selectbox("Please select the column name", delete_data.table_details(table_name))
+    with st.form("Delete_form", clear_on_submit=True):
+        value = st.text_input("Enter the value")
+        submit = st.form_submit_button("Submit")
+        if submit:
+            delete_data.delete(table_name, column_name, value)
+
+
+
+
+
+
+
 
 
 
