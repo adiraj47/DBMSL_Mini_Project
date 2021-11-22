@@ -11,10 +11,14 @@ main.data_creation()
 connect = sql.connect("Bank.sqlite", check_same_thread=False)
 
 side_box = st.sidebar.selectbox("What operation would you like to perform",
-                                ("Home","Add", "Delete", "Update", "Display", "Search","Add Customer Account"))
+                                ("Home","Add", "Delete", "Update", "Display", "Search","Add Customer Account","Deposit amount","Withdraw amount"))
 if side_box == "Home":
     st.title("Welcome to the bank management system")
     st.write("This page can perform basic CRUD applications like add, delete, update, display of all records")
+elif side_box=="Deposit amount":
+    dpw.deposit()
+elif side_box=="Withdraw amount":
+    dpw.withdraw()
 
 elif side_box == "Add":
     operation = st.selectbox("Please choose which add opreation", ("Bank", "Customer", "Employee", "Loan"))
